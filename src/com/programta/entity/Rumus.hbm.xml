@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 21, 2017 2:58:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.programta.entity.Rumus" table="rumus" catalog="programtaalbi" optimistic-lock="version">
+        <id name="kdRumus" type="int">
+            <column name="kd_rumus" />
+            <generator class="assigned" />
+        </id>
+        <property name="namaRumus" type="string">
+            <column name="nama_rumus" length="500" not-null="true" />
+        </property>
+        <property name="r1" type="string">
+            <column name="r1" length="500" not-null="true" />
+        </property>
+        <property name="r2" type="string">
+            <column name="r2" length="500" not-null="true" />
+        </property>
+        <property name="tanda" type="string">
+            <column name="tanda" length="500" not-null="true" />
+        </property>
+        <set name="pekerjas" table="pekerja" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="kd_rumus" not-null="true" />
+            </key>
+            <one-to-many class="com.programta.entity.Pekerja" />
+        </set>
+    </class>
+</hibernate-mapping>

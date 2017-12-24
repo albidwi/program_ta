@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 21, 2017 2:58:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.programta.entity.Evaluasi" table="evaluasi" catalog="programtaalbi" optimistic-lock="version">
+        <id name="idEvaluasi" type="java.lang.Integer">
+            <column name="id_evaluasi" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="intansi" class="com.programta.entity.Intansi" fetch="select">
+            <column name="kode_inst" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pekerja" class="com.programta.entity.Pekerja" fetch="select">
+            <column name="id_pekerja" not-null="true" />
+        </many-to-one>
+        <property name="kodeLhu" type="string">
+            <column name="kode_lhu" length="11" not-null="true" />
+        </property>
+        <property name="d1" type="string">
+            <column name="d1" length="11" not-null="true" />
+        </property>
+        <property name="d2" type="string">
+            <column name="d2" length="11" not-null="true" />
+        </property>
+        <property name="d3" type="string">
+            <column name="d3" length="11" not-null="true" />
+        </property>
+        <property name="kontrol" type="string">
+            <column name="kontrol" length="11" not-null="true" />
+        </property>
+        <property name="hp10" type="string">
+            <column name="hp10" length="11" not-null="true" />
+        </property>
+        <property name="hp07" type="string">
+            <column name="hp07" length="11" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

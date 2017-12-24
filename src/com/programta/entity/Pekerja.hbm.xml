@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 21, 2017 2:58:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.programta.entity.Pekerja" table="pekerja" catalog="programtaalbi" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="intansi" class="com.programta.entity.Intansi" fetch="select">
+            <column name="kd_inst" not-null="true" />
+        </many-to-one>
+        <many-to-one name="rumus" class="com.programta.entity.Rumus" fetch="select">
+            <column name="kd_rumus" not-null="true" />
+        </many-to-one>
+        <property name="kdPekerja" type="int">
+            <column name="kd_pekerja" not-null="true" />
+        </property>
+        <property name="divisi" type="string">
+            <column name="divisi" not-null="true" />
+        </property>
+        <property name="namaPekerja" type="string">
+            <column name="nama_pekerja" not-null="true" />
+        </property>
+        <property name="noKtp" type="string">
+            <column name="no_ktp" not-null="true" />
+        </property>
+        <set name="evaluasis" table="evaluasi" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_pekerja" not-null="true" />
+            </key>
+            <one-to-many class="com.programta.entity.Evaluasi" />
+        </set>
+    </class>
+</hibernate-mapping>
